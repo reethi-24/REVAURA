@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REVAURA 2026 | Premium Moto Expo - Tharang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap');
+        
+        :root {
+            --primary: #E21B1A; 
+            --bg-dark: #0a0a0a;
+            --card-bg: #141414;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .font-header { font-family: 'Orbitron', sans-serif; }
+
+        .glass {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(10,10,10,0.4), rgba(10,10,10,1)), 
+                        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+        }
+
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .animate-pulse-slow { animation: pulse-slow 3s infinite; }
+        
+        .feature-card:hover {
+            border-color:#E21B1A;
+            background: linear-gradient(45deg, rgba(250, 204, 21, 0.05), rgba(0,0,0,0));
+        }
+
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #E21B1A;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            red: {
+              500: '#E21B1A', // This overrides the default Tailwind red
+            }
+          }
+        }
+      }
+    }
+</script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass px-6 py-4 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="font-header text-2xl font-black tracking-tighter text-red-500">REVAURA</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-widest">
+                <a href="#about" class="hover:text-red-500 transition">About</a>
+                <a href="#tharang" class="hover:text-red-500 transition">Tharang</a>
+                <a href="#gallery" class="hover:text-red-500 transition">Highlights</a>
+                <a href="#booking" class="hover:text-red-500 transition">Tickets</a>
+                <a href="#contact" class="hover:text-red-500 transition">Contact</a>
+            </div>
+            <a href="#booking" class="bg-red-500 text-black px-6 py-2 rounded-full font-bold text-sm uppercase tracking-tighter hover:bg-white transition shadow-lg shadow-red-500/20">Book Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center hero-gradient px-6">
+        <div class="text-center z-10 max-w-4xl">
+            <p class="font-header text-red-500 tracking-[0.3em] mb-4 text-sm md:text-base animate-pulse-slow uppercase">Department of Mechanical Engineering Presents</p>
+            <h1 class="font-header text-6xl md:text-9xl font-black mb-6 leading-none italic uppercase">REVAURA <span class="text-red-500">26</span></h1>
+            <p class="text-xl md:text-2xl font-light mb-8 text-gray-300 italic">The Premium Moto Expo of Tharang 2026</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#booking" class="bg-red-500 text-black px-10 py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-white transition shadow-lg shadow-red-500/20">Get Tickets</a>
+                <a href="#about" class="border border-white text-white px-10 py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition">Explore Expo</a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-30">
+            <i data-lucide="chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 bg-[#0a0a0a]">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="font-header text-4xl font-black uppercase mb-6 leading-tight">The Masterpiece<br>of Engineering</h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                        REVAURA is the premium highlight of Tharang 2026, showcasing an exclusive lineup of high-end cars and luxury models from around the world. Organized by the Department of Mechanical Engineering at Jyothi Engineering College, it brings together the finest machines and auto enthusiasts.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="p-6 glass rounded-2xl border-l-4 border-red-500">
+                            <h4 class="font-header text-red-500 text-sm mb-2 uppercase tracking-widest">Exotic Lineup</h4>
+                            <p class="text-xs text-gray-400">Supercars, vintage classics, and luxury performance machines.</p>
+                        </div>
+                        <div class="p-6 glass rounded-2xl border-l-4 border-red-500">
+                            <h4 class="font-header text-red-500 text-sm mb-2 uppercase tracking-widest">2000+ Attendees</h4>
+                            <p class="text-xs text-gray-400">Engage with a massive crowd of tech enthusiasts and celebrities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=1000" class="rounded-3xl grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl shadow-red-500/10" alt="Supercar">
+                    <div class="absolute -bottom-6 -left-6 glass p-6 rounded-2xl hidden md:block">
+                        <p class="font-header text-2xl font-black text-red-500">JEC</p>
+                        <p class="text-[10px] uppercase tracking-widest">Mechanical Dept</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tharang Stats -->
+    <section id="tharang" class="py-20 border-y border-white/5 bg-[#0f0f0f]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h3 class="font-header text-2xl font-bold uppercase tracking-widest text-red-500">Tharang 2026</h3>
+                <p class="text-xs uppercase tracking-widest text-gray-500 mt-2">January 14 & 15</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-header font-black mb-2">2K+</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-500">Participants</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-header font-black mb-2">12L+</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-500">Event Budget</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-header font-black mb-2">20+</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-500">Main Events</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-header font-black mb-2">10+</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-500">Workshops</div>
+                </div>
+            </div>
+            <div class="mt-16 text-center max-w-3xl mx-auto">
+                <p class="text-gray-400 italic font-light text-sm">
+                    "Jyothi Engineering College (JEC) is a leading engineering college in Kerala, recognized for its quality education and innovative spirit."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Grid -->
+    <section id="gallery" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-header text-3xl font-black uppercase mb-2 italic">Event Highlights</h2>
+                <p class="text-gray-500 uppercase tracking-[0.2em] text-xs">What to expect at REVAURA '26</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="h-64 rounded-2xl overflow-hidden relative group">
+                    <img src="https://images.unsplash.com/photo-1542362567-b052cb1301c2?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                        <span class="font-header text-sm uppercase tracking-widest">Supercars</span>
+                    </div>
+                </div>
+                <div class="h-64 rounded-2xl overflow-hidden relative group md:col-span-2">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                        <span class="font-header text-sm uppercase tracking-widest">Exotic Display</span>
+                    </div>
+                </div>
+                <div class="h-64 rounded-2xl overflow-hidden relative group md:col-span-2">
+                    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                        <span class="font-header text-sm uppercase tracking-widest">Classic Performance</span>
+                    </div>
+                </div>
+                <div class="h-64 rounded-2xl overflow-hidden relative group">
+                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                        <span class="font-header text-sm uppercase tracking-widest">Luxury Segment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-24 px-6 bg-[#0f0f0f]">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-header text-4xl font-black uppercase mb-2">Secure Your Entry</h2>
+                <div class="w-24 h-1 bg-red-500 mx-auto mb-6"></div>
+                <p class="text-gray-400 text-lg uppercase tracking-widest">Ticket Rate: <span class="text-red-500 font-bold">₹50 / Ticket</span></p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <!-- Payment Side -->
+                <div class="glass p-8 rounded-3xl border border-red-500/20">
+                    <h3 class="font-header text-xl mb-6 text-center uppercase tracking-wider">Step 1: Scan & Pay</h3>
+                    
+                    <div class="mb-6 bg-red-500/10 p-4 rounded-2xl border border-red-500/20 text-center">
+                        <p class="text-[10px] uppercase text-red-500 font-black tracking-widest mb-1">Total Payable Amount</p>
+                        <h4 class="text-4xl font-black text-white">₹<span id="displayTotal">50</span></h4>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-2xl w-64 mx-auto mb-6">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center border-4 border-black rounded-lg overflow-hidden">
+                           <img id="qrImage" src="my-qr.png" alt="UPI QR Code" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+                    
+                    <div class="text-center space-y-2 mb-8">
+                        <p class="text-sm text-gray-400 font-semibold italic">Scan to pay via any UPI App</p>
+                        <p class="text-xs text-red-500/60 font-mono">UPI ID: 7559818834@ybl</p>
+                    </div>
+                    
+                    <div class="p-5 bg-red-500/5 rounded-2xl border border-red-500/10">
+                        <h4 class="text-sm font-bold uppercase mb-3 flex items-center gap-2 text-red-500">
+                            <i data-lucide="shield-check" class="w-4 h-4"></i> Booking Protocol
+                        </h4>
+                        <ul class="text-xs text-gray-400 space-y-3">
+                            <li class="flex gap-2"><span>1.</span> <span>Pay the total amount shown above.</span></li>
+                            <li class="flex gap-2"><span>2.</span> <span>Screenshot the <b>Success</b> screen.</span></li>
+                            <li class="flex gap-2 text-white"><span>3.</span> <span>Upload the proof and Transaction ID below.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Form Side -->
+                <div class="glass p-8 rounded-3xl relative overflow-hidden">
+                    <h3 class="font-header text-xl mb-6 uppercase tracking-wider">Step 2: Enter Details</h3>
+                    <form id="ticketForm" class="space-y-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="text-[10px] text-gray-500 uppercase font-black tracking-widest ml-1">Name</label>
+                                <input type="text" name="name" id="name" required placeholder="Name" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-red-500 transition">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-[10px] text-gray-500 uppercase font-black tracking-widest ml-1 text-red-500">Quantity</label>
+                                <select id="ticketCount" name="count" class="w-full bg-white/5 border border-red-500/30 p-4 rounded-xl focus:outline-none focus:border-red-500 transition text-red-500 font-bold">
+                                    <option value="1">1 Ticket (₹50)</option>
+                                    <option value="2">2 Tickets (₹100)</option>
+                                    <option value="3">3 Tickets (₹150)</option>
+                                    <option value="4">4 Tickets (₹200)</option>
+                                    <option value="5">5 Tickets (₹250)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="text-[10px] text-gray-500 uppercase font-black tracking-widest ml-1">Email</label>
+                                <input type="email" name="email" id="email" required placeholder="email@address.com" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-red-500 transition">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-[10px] text-gray-500 uppercase font-black tracking-widest ml-1">Mobile</label>
+                                <input type="tel" name="mobile" id="mobile" required placeholder="10-digit number" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-red-500 transition">
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-[10px] text-gray-500 uppercase font-black tracking-widest ml-1 text-red-500">Transaction_id / UTR</label>
+                            <input type="text" name="tid" id="tid" required placeholder="Enter 12-digit UTR" class="w-full bg-white/5 border border-red-500/20 p-4 rounded-xl focus:outline-none focus:border-red-500 transition font-mono uppercase text-red-500">
+                            <p id="tidError" class="text-red-500 text-[10px] mt-1 hidden font-bold uppercase tracking-widest">This Transaction ID has already been used.</p>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-[10px] text-gray-500 uppercase font-black tracking-widest ml-1">Payment_Proof</label>
+                            <div class="relative group">
+                                <input type="file" id="screenshot" accept="image/*" required class="hidden">
+                                <label for="screenshot" id="dropzone" class="flex flex-col items-center justify-center w-full p-6 border-2 border-dashed border-white/10 rounded-xl cursor-pointer hover:border-red-500/50 hover:bg-red-500/5 transition">
+                                    <div class="text-center" id="uploadLabel">
+                                        <i data-lucide="image-plus" class="mx-auto mb-2 text-gray-500"></i>
+                                        <p class="text-xs text-gray-500 uppercase tracking-tighter">Upload Screenshot</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="w-full bg-red-500 text-black py-4 rounded-xl font-black uppercase tracking-widest hover:bg-white transition-all shadow-lg shadow-red-500/20 mt-4 flex items-center justify-center gap-2">
+                            <i data-lucide="ticket" class="w-5 h-5"></i>
+                            Confirm Booking
+                        </button>
+                    </form>
+
+                    <div id="bookingSuccess" class="hidden text-center py-10 space-y-4">
+                        <div class="w-24 h-24 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-500/20">
+                            <i data-lucide="check" class="w-12 h-12"></i>
+                        </div>
+                        <h3 class="font-header text-2xl font-bold uppercase">Request Received</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed px-4">Your payment verification is in progress. Once confirmed, your ticket(s) will be sent to your email.</p>
+                        <button onclick="location.reload()" class="bg-white/5 border border-white/10 px-6 py-2 rounded-full text-xs uppercase font-bold tracking-widest hover:bg-white/10 transition mt-6">New Booking</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-[#0a0a0a] border-t border-white/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-header text-3xl font-black uppercase mb-2">Contact Team</h2>
+                <p class="text-gray-500 text-xs uppercase tracking-widest">Reach out for queries or support</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass p-8 rounded-2xl text-center">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-red-500 mb-2">General Coordinator</p>
+                    <h4 class="font-header text-lg mb-2">Hafiz</h4>
+                    <a href="tel:+917559818834" class="text-gray-400 hover:text-white transition">+91 8606740109</a>
+                </div>
+                <div class="glass p-8 rounded-2xl text-center">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-red-500 mb-2">Public Relations</p>
+                    <h4 class="font-header text-lg mb-2">Hashil</h4>
+                    <a href="tel:+919562183668" class="text-gray-400 hover:text-white transition">+91 8590628546</a>
+                </div>
+                <div class="glass p-8 rounded-2xl text-center">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-red-500 mb-2">Organizing Committee</p>
+                    <h4 class="font-header text-lg mb-2">Anay</h4>
+                    <a href="tel:+919447673844" class="text-gray-400 hover:text-white transition">+91 9048655559</a>
+                </div>
+            </div>
+
+            <div class="mt-20 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/5 pt-12">
+                <div>
+                    <h4 class="font-header text-xl font-black text-red-500 mb-1">REVAURA '26</h4>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Dept. of Mechanical Engineering | JEC</p>
+                </div>
+                <div class="flex gap-8">
+                    <a href="#" class="group text-center">
+                        <p class="text-[10px] uppercase tracking-widest text-gray-500 group-hover:text-red-500 transition">Instagram</p>
+                        <p class="text-sm font-header">@revaura_26</p>
+                    </a>
+                    <a href="#" class="group text-center">
+                        <p class="text-[10px] uppercase tracking-widest text-gray-500 group-hover:text-red-500 transition">Community</p>
+                        <p class="text-sm font-header">@mech.stan</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center border-t border-white/5">
+        <p class="text-[10px] uppercase tracking-[0.5em] text-gray-600">REVAURA '26 • Tharang • Jyothi Engineering College</p>
+    </footer>
+
+    <!-- JS Logic -->
+    <script>
+        // --- STEP 4: CONFIGURATION ---
+        const SUPABASE_URL = 'https://gekwvcmtqxylttjblbbq.supabase.co'; 
+        const SUPABASE_KEY = 'sb_publishable_W4RfH_7QTWgZJuT3eAfV9g_4PgwmW8n';
+
+        // We remove the "if" check entirely. 
+        // This line creates the connection immediately using your key from the screenshot.
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        
+
+        lucide.createIcons();
+
+        const ticketPrice = 50;
+        const ticketSelect = document.getElementById('ticketCount');
+        const displayTotal = document.getElementById('displayTotal');
+        const fileInput = document.getElementById('screenshot');
+        const uploadLabel = document.getElementById('uploadLabel');
+        const dropzone = document.getElementById('dropzone');
+        const ticketForm = document.getElementById('ticketForm');
+
+        ticketSelect.addEventListener('change', (e) => {
+            const count = parseInt(e.target.value);
+            displayTotal.innerText = count * ticketPrice;
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                const fileName = e.target.files[0].name;
+                dropzone.classList.add('border-green-500/50', 'bg-green-500/5');
+                uploadLabel.innerHTML = `
+                    <i data-lucide="file-check" class="mx-auto mb-2 text-green-500"></i>
+                    <p class="text-xs text-green-500 font-bold uppercase">${fileName}</p>
+                `;
+                lucide.createIcons();
+            }
+        });
+
+        ticketForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const originalContent = btn.innerHTML;
+
+            if (!supabaseClient) {
+                alert("Please connect your Supabase keys first!");
+                return;
+            }
+
+            try {
+                btn.disabled = true;
+                btn.innerHTML = `<div class="loading-spinner"></div> <span>PROCESSING...</span>`;
+
+                const file = fileInput.files[0];
+                const fileExt = file.name.split('.').pop();
+                const fileName = `${Date.now()}.${fileExt}`;
+                const filePath = `proofs/${fileName}`;
+
+                const { error: uploadError } = await supabaseClient.storage
+                    .from('screenshots')
+                    .upload(filePath, file);
+
+                if (uploadError) throw uploadError;
+
+                const { data: urlData } = supabaseClient.storage
+                    .from('screenshots')
+                    .getPublicUrl(filePath);
+
+                const { error: insertError } = await supabaseClient
+                    .from('bookings')
+                    .insert([{
+                        full_name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        mobile: document.getElementById('mobile').value,
+                        ticket_count: parseInt(ticketSelect.value),
+                        total_price: parseInt(ticketSelect.value) * ticketPrice,
+                        transaction_id: document.getElementById('tid').value,
+                        screenshot_url: urlData.publicUrl
+                    }]);
+
+                if (insertError) throw insertError;
+
+                ticketForm.classList.add('hidden');
+                document.getElementById('bookingSuccess').classList.remove('hidden');
+
+            } /*catch (err) {
+                console.error(err);
+                alert("Error submitting booking: " + err.message);
+                btn.disabled = false;
+                btn.innerHTML = originalContent;
+            }*/
+            /*catch (err) {
+    console.error(err);
+    
+    // This checks if the error is a 'Duplicate' error
+    if (err.code === "23505") {
+        alert("STOP! This Transaction ID has already been used. Please check your receipt.");
+    } else {
+        alert("Error: " + err.message);
+    }
+    
+    btn.disabled = false;
+    btn.innerHTML = originalContent;
+}*/
+catch (err) {
+    console.error(err);
+    const tidInput = document.getElementById('tid');
+    const tidError = document.getElementById('tidError');
+
+    // If it's a duplicate error (Code 23505)
+    if (err.code === "23505") {
+        // Show the message under the box
+        tidError.classList.remove('hidden');
+        // Make the box border bright red to highlight the mistake
+        tidInput.classList.add('border-red-600', 'bg-red-500/10');
+        tidInput.focus();
+    } else {
+        alert("Error: " + err.message);
+    }
+    
+    btn.disabled = false;
+    btn.innerHTML = originalContent;
+}
+// Hide the error message when the user starts typing again
+document.getElementById('tid').addEventListener('input', function() {
+    this.classList.remove('border-red-600', 'bg-red-500/10');
+    document.getElementById('tidError').classList.add('hidden');
+});
+        });
+    </script>
+</body>
+</html>
