@@ -12,7 +12,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap');
         
         :root {
-            --primary: #ef4444; 
+            --primary: #E21B1A; 
             --bg-dark: #0a0a0a;
             --card-bg: #141414;
         }
@@ -46,14 +46,14 @@
         .animate-pulse-slow { animation: pulse-slow 3s infinite; }
         
         .feature-card:hover {
-            border-color: #ef4444;
+            border-color:#E21B1A;
             background: linear-gradient(45deg, rgba(250, 204, 21, 0.05), rgba(0,0,0,0));
         }
 
         .loading-spinner {
             border: 3px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
-            border-top: 3px solid #ef4444;
+            border-top: 3px solid #E21B1A;
             width: 20px;
             height: 20px;
             animation: spin 1s linear infinite;
@@ -64,6 +64,19 @@
             100% { transform: rotate(360deg); }
         }
     </style>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            red: {
+              500: '#E21B1A', // This overrides the default Tailwind red
+            }
+          }
+        }
+      }
+    }
+</script>
 </head>
 <body>
 
@@ -277,6 +290,7 @@
                         <div class="space-y-1">
                             <label class="text-[10px] text-gray-500 uppercase font-black tracking-widest ml-1 text-red-500">Transaction_id / UTR</label>
                             <input type="text" name="tid" id="tid" required placeholder="Enter 12-digit UTR" class="w-full bg-white/5 border border-red-500/20 p-4 rounded-xl focus:outline-none focus:border-red-500 transition font-mono uppercase text-red-500">
+                            <p id="tidError" class="text-red-500 text-[10px] mt-1 hidden font-bold uppercase tracking-widest">This Transaction ID has already been used.</p>
                         </div>
 
                         <div class="space-y-1">
@@ -445,12 +459,49 @@
                 ticketForm.classList.add('hidden');
                 document.getElementById('bookingSuccess').classList.remove('hidden');
 
-            } catch (err) {
+            } /*catch (err) {
                 console.error(err);
                 alert("Error submitting booking: " + err.message);
                 btn.disabled = false;
                 btn.innerHTML = originalContent;
-            }
+            }*/
+            /*catch (err) {
+    console.error(err);
+    
+    // This checks if the error is a 'Duplicate' error
+    if (err.code === "23505") {
+        alert("STOP! This Transaction ID has already been used. Please check your receipt.");
+    } else {
+        alert("Error: " + err.message);
+    }
+    
+    btn.disabled = false;
+    btn.innerHTML = originalContent;
+}*/
+catch (err) {
+    console.error(err);
+    const tidInput = document.getElementById('tid');
+    const tidError = document.getElementById('tidError');
+
+    // If it's a duplicate error (Code 23505)
+    if (err.code === "23505") {
+        // Show the message under the box
+        tidError.classList.remove('hidden');
+        // Make the box border bright red to highlight the mistake
+        tidInput.classList.add('border-red-600', 'bg-red-500/10');
+        tidInput.focus();
+    } else {
+        alert("Error: " + err.message);
+    }
+    
+    btn.disabled = false;
+    btn.innerHTML = originalContent;
+}
+// Hide the error message when the user starts typing again
+document.getElementById('tid').addEventListener('input', function() {
+    this.classList.remove('border-red-600', 'bg-red-500/10');
+    document.getElementById('tidError').classList.add('hidden');
+});
         });
     </script>
 </body>
