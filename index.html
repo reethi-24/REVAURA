@@ -216,47 +216,14 @@
             <div class="text-center mb-16">
                 <h2 class="font-header text-4xl font-black uppercase mb-2">Secure Your Entry</h2>
                 <div class="w-24 h-1 bg-red-500 mx-auto mb-6"></div>
-                <p class="text-gray-400 text-lg uppercase tracking-widest">Ticket Rate: <span class="text-red-500 font-bold">₹50 / Ticket</span></p>
+                <p class="text-gray-400 text-lg uppercase tracking-widest">Ticket Rate: <span class="text-red-500 font-bold">₹50 per Ticket</span></p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12 items-start">
-                <!-- Payment Side -->
-                <div class="glass p-8 rounded-3xl border border-red-500/20">
-                    <h3 class="font-header text-xl mb-6 text-center uppercase tracking-wider">Step 1: Scan & Pay</h3>
-                    
-                    <div class="mb-6 bg-red-500/10 p-4 rounded-2xl border border-red-500/20 text-center">
-                        <p class="text-[10px] uppercase text-red-500 font-black tracking-widest mb-1">Total Payable Amount</p>
-                        <h4 class="text-4xl font-black text-white">₹<span id="displayTotal">50</span></h4>
-                    </div>
-
-                    <div class="bg-white p-4 rounded-2xl w-64 mx-auto mb-6">
-                        <div class="aspect-square bg-gray-100 flex items-center justify-center border-4 border-black rounded-lg overflow-hidden">
-                           <img id="qrImage" src="my-qr.png" alt="UPI QR Code" class="w-full h-full object-contain">
-                        </div>
-                    </div>
-                    
-                    <div class="text-center space-y-2 mb-8">
-                        <p class="text-xs text-white/60 font-mono">NAME:M RIBIN</p>
-                        <p class="text-sm text-gray-400 font-semibold italic">Scan to pay via any UPI App</p>
-                        <p class="text-xs text-white/60 font-mono">UPI ID:8129637880-2@axl</p>
-
-                    </div>
-                    
-                    <div class="p-5 bg-red-500/5 rounded-2xl border border-red-500/10">
-                        <h4 class="text-sm font-bold uppercase mb-3 flex items-center gap-2 text-red-500">
-                            <i data-lucide="shield-check" class="w-4 h-4"></i> Booking Protocol
-                        </h4>
-                        <ul class="text-xs text-gray-400 space-y-3">
-                            <li class="flex gap-2"><span>1.</span> <span>Pay the total amount shown above.</span></li>
-                            <li class="flex gap-2"><span>2.</span> <span>Screenshot the <b>Success</b> screen.</span></li>
-                            <li class="flex gap-2 text-white"><span>3.</span> <span>Upload the proof and Transaction ID below.</span></li>
-                        </ul>
-                    </div>
-                </div>
-
+            <div class="text-center ">
+                
                 <!-- Form Side -->
                 <div class="glass p-8 rounded-3xl relative overflow-hidden">
-                    <h3 class="font-header text-xl mb-6 uppercase tracking-wider">Step 2: Enter Details</h3>
+                    <h3 class="font-header text-xl mb-6 uppercase tracking-wider">Enter Details</h3>
                     <form id="ticketForm" class="space-y-5">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="space-y-1">
@@ -288,6 +255,40 @@
                                 <p id="mobileError" class="text-red-500 text-[10px] mt-1 hidden font-bold uppercase tracking-widest">Please fill out this field.</p>
                             </div>
                         </div>
+                        <!-- Payment Side -->
+                <div class="glass p-8 rounded-3xl border border-red-500/20">
+                    <h3 class="font-header text-xl mb-6 text-center uppercase tracking-wider"> Scan & Pay</h3>
+                    
+                    <div class="mb-6 bg-red-500/10 p-4 rounded-2xl border border-red-500/20 text-center">
+                        <p class="text-[10px] uppercase text-red-500 font-black tracking-widest mb-1">Total Payable Amount</p>
+                        <h4 class="text-4xl font-black text-white">₹<span id="displayTotal">50</span></h4>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-2xl w-64 mx-auto mb-6">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center border-4 border-black rounded-lg overflow-hidden">
+                           <img id="qrImage" src="my-qr.png" alt="UPI QR Code" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+                    
+                    <div class="text-center space-y-2 mb-8">
+                        <p class="text-xs text-white/60 font-mono">NAME:M RIBIN</p>
+                        <p class="text-sm text-gray-400 font-semibold italic">Scan to pay via any UPI App</p>
+                        <p class="text-xs text-white/60 font-mono">UPI ID:8129637880-2@axl</p>
+
+                    </div>
+                    
+                    <div class="p-5 bg-red-500/5 rounded-2xl border border-red-500/10">
+                        <h4 class="text-sm font-bold uppercase mb-3 flex items-center gap-2 text-red-500">
+                            <i data-lucide="shield-check" class="w-4 h-4"></i> Booking Protocol
+                        </h4>
+                        <ul class="text-xs text-gray-400 space-y-3">
+                            <li class="flex gap-2"><span>1.</span> <span>Pay the total amount shown above.</span></li>
+                            <li class="flex gap-2"><span>2.</span> <span>Screenshot the <b>Success</b> screen.</span></li>
+                            <li class="flex gap-2 text-white"><span>3.</span> <span>Upload the proof and Transaction ID below.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
 
                         <div class="space-y-1">
                             <label class="text-[10px] text-gray-500 uppercase font-black tracking-widest ml-1 text-red-500">Transaction_id / UTR</label>
