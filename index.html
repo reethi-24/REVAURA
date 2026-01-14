@@ -224,105 +224,25 @@
                 <!-- Form Side -->
                 <div class="glass p-8 rounded-3xl relative overflow-hidden">
                     <h3 class="font-header text-xl mb-6 uppercase tracking-wider">Enter Details</h3>
-                    <form id="ticketForm" class="space-y-5">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="space-y-1">
-                                <label class="text-[10px] text-gray-500 uppercase font-black tracking-widest ml-1">Name</label>
-                                <input type="text" name="name" id="name" placeholder="Name" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-red-500 transition">
-                                <p id="nameError" class="text-red-500 text-[10px] mt-1 hidden font-bold uppercase tracking-widest">Please fill out this field.</p>
-                            </div>
-                            <div class="space-y-1">
-                                <label class="text-[10px] text-gray-500 uppercase font-black tracking-widest ml-1 text-red-500">Quantity</label>
-                                <select id="ticketCount" name="count" class="w-full bg-white/5 border border-red-500/30 p-4 rounded-xl focus:outline-none focus:border-red-500 transition text-red-500 font-bold">
-                                    <option value="1">1 Ticket (₹50)</option>
-                                    <option value="2">2 Tickets (₹100)</option>
-                                    <option value="3">3 Tickets (₹150)</option>
-                                    <option value="4">4 Tickets (₹200)</option>
-                                    <option value="5">5 Tickets (₹250)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="space-y-1">
-                                <label class="text-[10px] text-gray-500 uppercase font-black tracking-widest ml-1">Email</label>
-                                <input type="email" name="email" id="email" placeholder="email@address.com" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-red-500 transition">
-                                <p id="emailError" class="text-red-500 text-[10px] mt-1 hidden font-bold uppercase tracking-widest">Please fill out this field.</p>
-                            </div>
-                            <div class="space-y-1">
-                                <label class="text-[10px] text-gray-500 uppercase font-black tracking-widest ml-1">Mobile</label>
-                                <input type="tel" name="mobile" id="mobile" placeholder="10-digit number" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-red-500 transition">
-                                <p id="mobileError" class="text-red-500 text-[10px] mt-1 hidden font-bold uppercase tracking-widest">Please fill out this field.</p>
-                            </div>
-                        </div>
-                        <!-- Payment Side -->
-                <div class="glass p-8 rounded-3xl border border-red-500/20">
-                    <h3 class="font-header text-xl mb-6 text-center uppercase tracking-wider"> Scan & Pay</h3>
-                    
-                    <div class="mb-6 bg-red-500/10 p-4 rounded-2xl border border-red-500/20 text-center">
-                        <p class="text-[10px] uppercase text-red-500 font-black tracking-widest mb-1">Total Payable Amount</p>
-                        <h4 class="text-4xl font-black text-white">₹<span id="displayTotal">50</span></h4>
-                    </div>
-
-                    <div class="bg-white p-4 rounded-2xl w-full max-w-xs sm:max-w-sm mx-auto mb-6">
-    <div class="bg-gray-100 flex items-center justify-center border-4 border-black rounded-lg p-3">
-        <img
-            id="qrImage"
-            src="my-qr.png"
-            alt="UPI QR Code"
-            class="w-full h-auto max-h-[60vh] object-contain"
-        >
+                    <div class="glass p-10 rounded-3xl text-center">
+    <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/20">
+        <i data-lucide="lock" class="w-12 h-12 text-red-500"></i>
     </div>
-</div>
 
-                    
-                    <div class="text-center space-y-2 mb-8">
-                        <p class="text-xs text-white/60 font-mono">NAME:M RIBIN</p>
-                        <p class="text-sm text-gray-400 font-semibold italic">Scan to pay via any UPI App</p>
-                        <p class="text-xs text-white/60 font-mono">UPI ID:8129637880-2@axl</p>
+    <h3 class="font-header text-2xl font-black uppercase mb-4">
+        Bookings Closed
+    </h3>
 
-                    </div>
-                    
-                    <div class="p-5 bg-red-500/5 rounded-2xl border border-red-500/10">
-                        <h4 class="text-sm font-bold uppercase mb-3 flex items-center gap-2 text-red-500">
-                            <i data-lucide="shield-check" class="w-4 h-4"></i> Booking Protocol
-                        </h4>
-                        <ul class="text-xs text-gray-400 space-y-3">
-                            <li class="flex gap-2"><span>1.</span> <span>Pay the total amount shown above.</span></li>
-                            <li class="flex gap-2"><span>2.</span> <span>Screenshot the <b>Success</b> screen.</span></li>
-                            <li class="flex gap-2 text-white"><span>3.</span> <span>Upload the proof and Transaction ID below.</span></li>
-                        </ul>
-                    </div>
-                </div>
+    <p class="text-gray-400 text-sm leading-relaxed max-w-md mx-auto">
+        Ticket bookings for <span class="text-red-500 font-bold">REVAURA ’26</span> are now officially closed.  
+        Thank you for the overwhelming response and support!
+    </p>
 
-
-                        <div class="space-y-1">
-                            <label class="text-[10px] text-gray-500 uppercase font-black tracking-widest ml-1 text-red-500">Transaction_id / UTR</label>
-                            <input type="text" name="tid" id="tid" placeholder="Enter 12-digit UTR" class="w-full bg-white/5 border border-red-500/20 p-4 rounded-xl focus:outline-none focus:border-red-500 transition font-mono uppercase text-red-500">
-                                <p id="tidEmptyError" class="text-red-500 text-[10px] mt-1 hidden font-bold uppercase tracking-widest">Please fill out this field.</p>
-                            <p id="tidError" class="text-red-500 text-[10px] mt-1 hidden font-bold uppercase tracking-widest">This Transaction ID has already been used.</p>
-                        </div>
-
-                       <div class="space-y-1">
-    <label class="text-[10px] text-gray-500 uppercase font-black tracking-widest ml-1">Payment_Proof</label>
-    <input type="file" id="screenshot" accept="image/*" class="hidden">
-    <label for="screenshot" id="dropzone" class="flex flex-col items-center justify-center w-full p-6 border-2 border-dashed border-white/10 rounded-xl cursor-pointer hover:border-red-500/50 hover:bg-red-500/5 transition">
-        <div class="text-center" id="uploadLabel">
-            <i data-lucide="image-plus" class="mx-auto mb-2 text-gray-500"></i>
-            <p class="text-xs text-gray-500 uppercase tracking-tighter">Upload Screenshot</p>
-        </div>
-    </label>
-    <p id="screenshotError" class="text-red-500 text-[10px] mt-1 hidden font-bold uppercase tracking-widest">
-        Please upload a screenshot.
+    <p class="mt-6 text-xs uppercase tracking-widest text-gray-500">
+        See you at the next edition 🚀
     </p>
 </div>
 
-
-                        <button type="submit" id="submitBtn" class="w-full bg-red-500 text-black py-4 rounded-xl font-black uppercase tracking-widest hover:bg-white transition-all shadow-lg shadow-red-500/20 mt-4 flex items-center justify-center gap-2">
-                            <i data-lucide="ticket" class="w-5 h-5"></i>
-                            Confirm Booking
-                        </button>
-                    </form>
 
                     <div id="bookingSuccess" class="hidden text-center py-10 space-y-4">
                         <div class="w-24 h-24 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-500/20">
@@ -391,162 +311,9 @@
 
     <!-- JS Logic -->
     <script>
-const supabaseClient = supabase.createClient('https://gekwvcmtqxylttjblbbq.supabase.co', 'sb_publishable_W4RfH_7QTWgZJuT3eAfV9g_4PgwmW8n');
-
-const ticketPrice = 50;
-const ticketSelect = document.getElementById('ticketCount');
-const displayTotal = document.getElementById('displayTotal');
-const fileInput = document.getElementById('screenshot');
-const uploadLabel = document.getElementById('uploadLabel');
-const dropzone = document.getElementById('dropzone');
-const ticketForm = document.getElementById('ticketForm');
-const submitBtn = document.getElementById('submitBtn');
-
-ticketSelect.addEventListener('change', (e) => {
-    displayTotal.innerText = parseInt(e.target.value) * ticketPrice;
-});
-
-fileInput.addEventListener('change', (e) => {
-    if (e.target.files.length > 0) {
-        const fileName = e.target.files[0].name;
-        dropzone.classList.add('border-green-500/50', 'bg-green-500/5');
-        uploadLabel.innerHTML = `
-            <i data-lucide="file-check" class="mx-auto mb-2 text-green-500"></i>
-            <p class="text-xs text-green-500 font-bold uppercase">${fileName}</p>
-        `;
-        lucide.createIcons();
-    }
-});
-
-ticketForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // --- Reset previous errors ---
-    const fields = ['name','email','mobile','tid','screenshot'];
-    let hasError = false;
-
-    fields.forEach(id => {
-        const input = document.getElementById(id);
-        if(id === 'tid') {
-            const emptyError = document.getElementById('tidEmptyError');
-            const usedError = document.getElementById('tidError');
-            if (!input.value.trim()) {
-                emptyError.classList.remove('hidden');
-                usedError.classList.add('hidden');
-                input.classList.add('border-red-600','bg-red-500/10');
-                hasError = true;
-            } else {
-                emptyError.classList.add('hidden');
-                input.classList.remove('border-red-600','bg-red-500/10');
-            }
-        } else if(id === 'screenshot') {
-            const error = document.getElementById(id + 'Error');
-            if (!input.files || input.files.length === 0) {
-                error.classList.remove('hidden');
-                input.classList.add('border-red-600','bg-red-500/10');
-                hasError = true;
-            } else {
-                error.classList.add('hidden');
-                input.classList.remove('border-red-600','bg-red-500/10');
-            }
-        } else {
-            const error = document.getElementById(id + 'Error');
-            if (!input.value.trim()) {
-                error.classList.remove('hidden');
-                input.classList.add('border-red-600','bg-red-500/10');
-                hasError = true;
-            } else {
-                error.classList.add('hidden');
-                input.classList.remove('border-red-600','bg-red-500/10');
-            }
-        }
-    });
-
-    if(hasError) return; // Stop if empty fields
-
-    // --- Proceed with screenshot upload ---
-    const originalContent = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `<div class="loading-spinner"></div> <span>PROCESSING...</span>`;
-
-    try {
-        const file = fileInput.files[0];
-        const fileExt = file.name.split('.').pop();
-        const fileName = `${Date.now()}.${fileExt}`;
-        const filePath = `proofs/${fileName}`;
-
-        const { error: uploadError } = await supabaseClient.storage
-            .from('screenshots')
-            .upload(filePath, file);
-
-        if(uploadError) throw uploadError;
-
-        const { data: urlData } = supabaseClient.storage
-            .from('screenshots')
-            .getPublicUrl(filePath);
-
-        // --- Insert booking ---
-        const { error: insertError } = await supabaseClient
-            .from('bookings')
-            .insert([{
-                full_name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                mobile: document.getElementById('mobile').value,
-                ticket_count: parseInt(ticketSelect.value),
-                total_price: parseInt(ticketSelect.value) * ticketPrice,
-                transaction_id: document.getElementById('tid').value,
-                screenshot_url: urlData.publicUrl
-            }]);
-
-        if(insertError) {
-            // If duplicate transaction id
-            if(insertError.code === "23505") {
-                const tidInput = document.getElementById('tid');
-                const tidError = document.getElementById('tidError');
-                tidError.classList.remove('hidden');
-                tidInput.classList.add('border-red-600','bg-red-500/10');
-                tidInput.focus();
-            } else {
-                alert("Error: " + insertError.message);
-            }
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalContent;
-            return;
-        }
-
-        // Success
-        ticketForm.classList.add('hidden');
-        document.getElementById('bookingSuccess').classList.remove('hidden');
-
-    } catch(err) {
-        console.error(err);
-        alert("Error: " + err.message);
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalContent;
-    }
-});
-
-// --- Remove errors when typing ---
-['name','email','mobile','tid','screenshot'].forEach(id => {
-    const input = document.getElementById(id);
-    input.addEventListener('input', () => {
-        input.classList.remove('border-red-600','bg-red-500/10');
-        if(id==='tid'){
-            document.getElementById('tidEmptyError').classList.add('hidden');
-            document.getElementById('tidError').classList.add('hidden');
-        } else {
-            const error = document.getElementById(id + 'Error');
-            if(error) error.classList.add('hidden');
-        }
-    });
-});
-
-fileInput.addEventListener('change', () => {
-    const error = document.getElementById('screenshotError');
-    error.classList.add('hidden');
-    dropzone.classList.add('border-green-500/50', 'bg-green-500/5');
-});
+    lucide.createIcons();
 </script>
+
 
 </body>
 </html>
